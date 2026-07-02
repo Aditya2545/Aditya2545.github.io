@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Aditya Ghadshi — Robotics & Perception Engineer. ROS 2, Visual SLAM, TensorRT edge optimization, autonomous systems.">
+<title>Aditya Ghadshi | Robotics & Perception Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --bg:   #06080f;
+  --bg2:  #0b0e1a;
+  --bg3:  #0f1320;
+  --bg4:  #141828;
+
+  /* Accent palette — 6 vivid hues */
+  --cyan:   #22d3ee;
+  --violet: #a78bfa;
+  --rose:   #fb7185;
+  --amber:  #fbbf24;
+  --lime:   #86efac;
+  --orange: #fb923c;
+
+  /* Toned versions for backgrounds/borders */
+  --cyan-b:   rgba(34,211,238,.15);
+  --violet-b: rgba(167,139,250,.15);
+  --rose-b:   rgba(251,113,133,.15);
+  --amber-b:  rgba(251,191,36,.12);
+  --lime-b:   rgba(134,239,172,.12);
+  --orange-b: rgba(251,146,60,.12);
+
+  --text:  #e2e8f0;
+  --text2: #94a3b8;
+  --text3: #4b5a6e;
+  --border: rgba(148,163,184,.08);
+  --border2: rgba(148,163,184,.16);
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Space Grotesk', sans-serif;
+  --body: 'Inter', sans-serif;
+}
+
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.7;overflow-x:hidden}
+
+/* subtle dot grid */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:radial-gradient(circle, rgba(148,163,184,.06) 1px, transparent 1px);
+  background-size:32px 32px;pointer-events:none;z-index:0
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(6,8,15,.82);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border2);
+  padding:0 2rem;height:62px;
+  display:flex;align-items:center;justify-content:space-between
+}
+.nav-logo{font-family:var(--mono);font-size:14px;color:var(--cyan);text-decoration:none;letter-spacing:.05em}
+.nav-logo span{color:var(--text3)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:13px;color:var(--text2);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--cyan)}
+.nav-cta{
+  font-family:var(--mono);font-size:12px;
+  background:var(--cyan-b);border:1px solid rgba(34,211,238,.4);
+  color:var(--cyan);padding:7px 18px;border-radius:6px;
+  text-decoration:none;transition:background .2s;letter-spacing:.04em
+}
+.nav-cta:hover{background:rgba(34,211,238,.25)}
+
+section{position:relative;z-index:1}
+.container{max-width:1100px;margin:0 auto;padding:0 2rem}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:100px 0 60px;
+}
+
+/* Colourful ambient orbs */
+#hero::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 640px 420px at 78% 38%, rgba(34,211,238,.07) 0%, transparent 70%),
+    radial-gradient(ellipse 480px 360px at 12% 75%, rgba(167,139,250,.07) 0%, transparent 70%),
+    radial-gradient(ellipse 320px 280px at 55% 90%, rgba(251,113,133,.05) 0%, transparent 70%);
+}
+
+.hero-grid{
+  display:grid;grid-template-columns:1fr 340px;gap:4rem;
+  align-items:center;width:100%;max-width:1100px;margin:0 auto;padding:0 2rem
+}
+.hero-eyebrow{
+  font-family:var(--mono);font-size:11px;color:var(--cyan);
+  letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:10px
+}
+.hero-eyebrow::before{content:'';display:inline-block;width:28px;height:1px;background:var(--cyan)}
+.hero-name{
+  font-family:var(--sans);font-size:clamp(2.8rem,5.5vw,4.4rem);
+  font-weight:700;line-height:1.08;letter-spacing:-.03em;
+  color:#f1f5f9;margin-bottom:.5rem
+}
+/* Name gradient */
+.hero-name span{
+  background:linear-gradient(135deg, var(--cyan) 0%, var(--violet) 60%, var(--rose) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent
+}
+.hero-title{font-family:var(--sans);font-size:1.15rem;font-weight:500;color:var(--violet);margin-bottom:1.5rem}
+.hero-desc{font-size:.97rem;color:var(--text2);max-width:520px;line-height:1.85;margin-bottom:2rem}
+
+/* metric strip */
+.hero-metrics{
+  display:flex;gap:0;margin-bottom:2.5rem;
+  border:1px solid var(--border2);border-radius:12px;overflow:hidden
+}
+.hero-metric{
+  flex:1;padding:1rem 1.25rem;text-align:center;
+  border-right:1px solid var(--border);
+}
+.hero-metric:last-child{border-right:none}
+.hero-metric-val{font-family:var(--mono);font-size:1.4rem;font-weight:600;line-height:1}
+.hero-metric-label{font-size:10px;color:var(--text3);letter-spacing:.04em;margin-top:5px}
+.m1 .hero-metric-val{color:var(--cyan)}
+.m2 .hero-metric-val{color:var(--violet)}
+.m3 .hero-metric-val{color:var(--lime)}
+.m4 .hero-metric-val{color:var(--amber)}
+
+.hero-btns{display:flex;gap:.85rem;flex-wrap:wrap}
+.btn-primary{
+  background:linear-gradient(135deg, #0ea5e9, #6366f1);
+  color:#fff;border:none;padding:11px 24px;border-radius:8px;
+  font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;
+  transition:opacity .2s,transform .15s;display:inline-flex;align-items:center;gap:6px
+}
+.btn-primary:hover{opacity:.88;transform:translateY(-2px)}
+.btn-outline{
+  background:transparent;color:var(--text);border:1px solid var(--border2);
+  padding:10px 22px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;
+  text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px
+}
+.btn-outline:hover{border-color:var(--violet);color:var(--violet);transform:translateY(-2px)}
+
+/* hero sidebar card */
+.hero-card{
+  background:var(--bg3);border:1px solid var(--border2);
+  border-radius:18px;padding:2rem;
+  display:flex;flex-direction:column;align-items:center;gap:1.1rem
+}
+.hero-avatar{
+  width:100px;height:100px;border-radius:50%;
+  background:linear-gradient(135deg,var(--cyan),var(--violet));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--sans);font-size:2rem;font-weight:700;color:#fff
+}
+.hero-card-name{font-family:var(--sans);font-weight:700;font-size:1.1rem;color:var(--text);text-align:center}
+.hero-card-sub{font-size:11px;color:var(--text3);font-family:var(--mono);text-align:center}
+.hero-status{
+  display:flex;align-items:center;gap:7px;
+  font-size:11px;color:var(--lime);font-family:var(--mono);
+  background:var(--lime-b);border:1px solid rgba(134,239,172,.2);
+  padding:5px 12px;border-radius:20px
+}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--lime);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero-meta{font-family:var(--mono);font-size:10px;color:var(--text3);text-align:center;line-height:2}
+.hero-social{display:flex;gap:10px;margin-top:4px}
+.hero-social a{
+  width:34px;height:34px;border-radius:8px;background:var(--bg4);
+  border:1px solid var(--border);display:flex;align-items:center;
+  justify-content:center;text-decoration:none;color:var(--text2);font-size:14px;
+  transition:all .2s
+}
+.hero-social a:hover{border-color:var(--cyan);color:var(--cyan)}
+
+/* ── SECTION HEADER ── */
+.section-header{margin-bottom:3rem}
+.section-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:.5rem}
+.section-title{font-family:var(--sans);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:#f1f5f9;letter-spacing:-.02em;line-height:1.2}
+.section-divider{height:3px;width:48px;border-radius:2px;margin-top:1rem}
+
+/* colour per section */
+.sec-cyan  .section-eyebrow{color:var(--cyan)}  .sec-cyan  .section-divider{background:var(--cyan)}
+.sec-violet .section-eyebrow{color:var(--violet)} .sec-violet .section-divider{background:var(--violet)}
+.sec-rose  .section-eyebrow{color:var(--rose)}  .sec-rose  .section-divider{background:var(--rose)}
+.sec-amber .section-eyebrow{color:var(--amber)} .sec-amber .section-divider{background:var(--amber)}
+.sec-lime  .section-eyebrow{color:var(--lime)}  .sec-lime  .section-divider{background:var(--lime)}
+.sec-orange .section-eyebrow{color:var(--orange)} .sec-orange .section-divider{background:var(--orange)}
+
+/* ── ABOUT ── */
+#about{padding:100px 0;background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.about-text p{color:var(--text2);margin-bottom:1rem;line-height:1.85}
+.about-text p strong{color:var(--text)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.5rem}
+.tag{font-family:var(--mono);font-size:11px;padding:4px 12px;border-radius:4px;border:1px solid;letter-spacing:.02em}
+.tag-cyan{color:var(--cyan);border-color:rgba(34,211,238,.3);background:var(--cyan-b)}
+.tag-violet{color:var(--violet);border-color:rgba(167,139,250,.3);background:var(--violet-b)}
+.tag-rose{color:var(--rose);border-color:rgba(251,113,133,.3);background:var(--rose-b)}
+.tag-amber{color:var(--amber);border-color:rgba(251,191,36,.3);background:var(--amber-b)}
+.tag-lime{color:var(--lime);border-color:rgba(134,239,172,.3);background:var(--lime-b)}
+.tag-orange{color:var(--orange);border-color:rgba(251,146,60,.3);background:var(--orange-b)}
+
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.stat-card{
+  border-radius:12px;padding:1.25rem;text-align:center;border:1px solid
+}
+.stat-cyan{background:var(--cyan-b);border-color:rgba(34,211,238,.2)} .stat-cyan .sv{color:var(--cyan)}
+.stat-violet{background:var(--violet-b);border-color:rgba(167,139,250,.2)} .stat-violet .sv{color:var(--violet)}
+.stat-lime{background:var(--lime-b);border-color:rgba(134,239,172,.2)} .stat-lime .sv{color:var(--lime)}
+.stat-amber{background:var(--amber-b);border-color:rgba(251,191,36,.2)} .stat-amber .sv{color:var(--amber)}
+.sv{font-family:var(--mono);font-size:1.7rem;font-weight:600;line-height:1}
+.sl{font-size:11px;color:var(--text3);margin-top:6px;letter-spacing:.04em}
+
+.info-card{
+  background:var(--bg3);border-radius:12px;padding:1.5rem;
+  border-left:3px solid var(--violet);margin-top:1.5rem
+}
+.info-card p{font-size:13px;color:var(--text2);line-height:1.8;margin:0}
+
+/* ── SKILLS ── */
+#skills{padding:100px 0;background:var(--bg)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.skill-cat{border-radius:14px;padding:1.5rem;border:1px solid;transition:transform .2s}
+.skill-cat:hover{transform:translateY(-2px)}
+.sc-cyan{background:var(--cyan-b);border-color:rgba(34,211,238,.2)}
+.sc-violet{background:var(--violet-b);border-color:rgba(167,139,250,.2)}
+.sc-rose{background:var(--rose-b);border-color:rgba(251,113,133,.2)}
+.sc-amber{background:var(--amber-b);border-color:rgba(251,191,36,.2)}
+.sc-lime{background:var(--lime-b);border-color:rgba(134,239,172,.2)}
+.sc-orange{background:var(--orange-b);border-color:rgba(251,146,60,.2)}
+
+.skill-cat-head{display:flex;align-items:center;gap:10px;margin-bottom:1.1rem}
+.skill-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;border:1px solid}
+.sc-cyan .skill-icon{background:rgba(34,211,238,.12);border-color:rgba(34,211,238,.3)}
+.sc-violet .skill-icon{background:rgba(167,139,250,.12);border-color:rgba(167,139,250,.3)}
+.sc-rose .skill-icon{background:rgba(251,113,133,.12);border-color:rgba(251,113,133,.3)}
+.sc-amber .skill-icon{background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.3)}
+.sc-lime .skill-icon{background:rgba(134,239,172,.1);border-color:rgba(134,239,172,.3)}
+.sc-orange .skill-icon{background:rgba(251,146,60,.1);border-color:rgba(251,146,60,.3)}
+
+.skill-cat-title{font-family:var(--sans);font-size:14px;font-weight:700}
+.sc-cyan .skill-cat-title{color:var(--cyan)}
+.sc-violet .skill-cat-title{color:var(--violet)}
+.sc-rose .skill-cat-title{color:var(--rose)}
+.sc-amber .skill-cat-title{color:var(--amber)}
+.sc-lime .skill-cat-title{color:var(--lime)}
+.sc-orange .skill-cat-title{color:var(--orange)}
+
+.skill-pills{display:flex;flex-wrap:wrap;gap:7px}
+.pill{font-family:var(--mono);font-size:11px;padding:4px 10px;border-radius:4px;background:rgba(0,0,0,.3);border:1px solid var(--border);color:var(--text2)}
+.pill.hi{font-weight:500}
+.sc-cyan .pill.hi{color:var(--cyan);border-color:rgba(34,211,238,.3)}
+.sc-violet .pill.hi{color:var(--violet);border-color:rgba(167,139,250,.3)}
+.sc-rose .pill.hi{color:var(--rose);border-color:rgba(251,113,133,.3)}
+.sc-amber .pill.hi{color:var(--amber);border-color:rgba(251,191,36,.3)}
+.sc-lime .pill.hi{color:var(--lime);border-color:rgba(134,239,172,.3)}
+.sc-orange .pill.hi{color:var(--orange);border-color:rgba(251,146,60,.3)}
+
+/* ── PROJECTS ── */
+#projects{padding:100px 0;background:var(--bg2)}
+.filter-row{display:flex;gap:8px;margin-bottom:2.5rem;flex-wrap:wrap}
+.flt{font-family:var(--mono);font-size:11px;padding:6px 16px;border-radius:5px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;transition:all .2s;letter-spacing:.04em}
+.flt.active,.flt:hover{background:var(--cyan-b);border-color:rgba(34,211,238,.5);color:var(--cyan)}
+
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:1.5rem}
+
+@keyframes bar1{0%,100%{height:12px}50%{height:36px}}
+@keyframes bar2{0%,100%{height:28px}50%{height:14px}}
+@keyframes bar3{0%,100%{height:20px}50%{height:40px}}
+.proj-card{
+  background:var(--bg3);border-radius:16px;padding:1.75rem;
+  display:flex;flex-direction:column;gap:.9rem;
+  border:1px solid var(--border);text-decoration:none;color:inherit;
+  transition:border-color .25s,transform .2s
+}
+.proj-card:hover{transform:translateY(-4px)}
+
+/* colour-coded project cards */
+.pc-cyan:hover{border-color:rgba(34,211,238,.5)}
+.pc-violet:hover{border-color:rgba(167,139,250,.5)}
+.pc-rose:hover{border-color:rgba(251,113,133,.5)}
+.pc-amber:hover{border-color:rgba(251,191,36,.4)}
+.pc-lime:hover{border-color:rgba(134,239,172,.4)}
+.pc-orange:hover{border-color:rgba(251,146,60,.4)}
+
+/* coloured top stripe */
+.proj-stripe{height:3px;border-radius:2px;margin:-1.75rem -1.75rem 0;border-radius:16px 16px 0 0}
+.stripe-cyan{background:var(--cyan)}
+.stripe-violet{background:var(--violet)}
+.stripe-rose{background:var(--rose)}
+.stripe-amber{background:var(--amber)}
+.stripe-lime{background:var(--lime)}
+.stripe-orange{background:var(--orange)}
+
+.proj-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-top:.75rem}
+.proj-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;border:1px solid}
+.pi-cyan{background:var(--cyan-b);border-color:rgba(34,211,238,.3)}
+.pi-violet{background:var(--violet-b);border-color:rgba(167,139,250,.3)}
+.pi-rose{background:var(--rose-b);border-color:rgba(251,113,133,.3)}
+.pi-amber{background:var(--amber-b);border-color:rgba(251,191,36,.3)}
+.pi-lime{background:var(--lime-b);border-color:rgba(134,239,172,.3)}
+.pi-orange{background:var(--orange-b);border-color:rgba(251,146,60,.3)}
+
+.proj-badge{font-family:var(--mono);font-size:10px;padding:3px 9px;border-radius:3px;border:1px solid;letter-spacing:.05em}
+.pb-cyan{color:var(--cyan);border-color:rgba(34,211,238,.3);background:var(--cyan-b)}
+.pb-violet{color:var(--violet);border-color:rgba(167,139,250,.3);background:var(--violet-b)}
+.pb-rose{color:var(--rose);border-color:rgba(251,113,133,.3);background:var(--rose-b)}
+.pb-amber{color:var(--amber);border-color:rgba(251,191,36,.3);background:var(--amber-b)}
+.pb-lime{color:var(--lime);border-color:rgba(134,239,172,.3);background:var(--lime-b)}
+.pb-orange{color:var(--orange);border-color:rgba(251,146,60,.3);background:var(--orange-b)}
+
+.proj-title{font-family:var(--sans);font-size:1rem;font-weight:700;color:var(--text);line-height:1.3}
+.proj-desc{font-size:13px;color:var(--text2);line-height:1.72}
+.proj-ach{font-family:var(--mono);font-size:11px;border-radius:6px;padding:8px 10px;display:flex;gap:7px;align-items:flex-start;border:1px solid}
+.pa-cyan{background:var(--cyan-b);border-color:rgba(34,211,238,.2);color:var(--cyan)}
+.pa-violet{background:var(--violet-b);border-color:rgba(167,139,250,.2);color:var(--violet)}
+.pa-rose{background:var(--rose-b);border-color:rgba(251,113,133,.2);color:var(--rose)}
+.pa-amber{background:var(--amber-b);border-color:rgba(251,191,36,.2);color:var(--amber)}
+.pa-lime{background:var(--lime-b);border-color:rgba(134,239,172,.2);color:var(--lime)}
+.pa-orange{background:var(--orange-b);border-color:rgba(251,146,60,.2);color:var(--orange)}
+
+.proj-tech{display:flex;flex-wrap:wrap;gap:6px}
+.tech{font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:3px;background:var(--bg4);border:1px solid var(--border);color:var(--text3)}
+.proj-footer{display:flex;align-items:center;justify-content:space-between;padding-top:.75rem;border-top:1px solid var(--border);margin-top:auto}
+.proj-lang{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:var(--text3)}
+.ldot{width:9px;height:9px;border-radius:50%}
+.proj-link{font-family:var(--mono);font-size:11px;text-decoration:none;display:flex;align-items:center;gap:4px;transition:opacity .2s}
+.proj-link:hover{opacity:.7}
+.lc{color:var(--cyan)} .lv{color:var(--violet)} .lr{color:var(--rose)} .la{color:var(--amber)} .ll{color:var(--lime)} .lo{color:var(--orange)}
+
+/* ── PROJECT MEDIA ── */
+.proj-media{
+  margin:-1.75rem -1.75rem 0;
+  border-radius:16px 16px 0 0;
+  overflow:hidden;
+  position:relative;
+  height:190px;
+  background:var(--bg4);
+  border-bottom:1px solid var(--border);
+}
+.proj-media img,.proj-media gif{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .4s ease;
+}
+.proj-card:hover .proj-media img{transform:scale(1.04)}
+.proj-media-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom, transparent 40%, rgba(6,8,15,.85) 100%);
+  pointer-events:none;
+}
+.proj-media-badge{
+  position:absolute;top:10px;right:10px;
+  font-family:var(--mono);font-size:10px;
+  padding:3px 9px;border-radius:3px;border:1px solid;
+  letter-spacing:.05em;backdrop-filter:blur(6px);
+}
+/* placeholder blocks for repos without media */
+.proj-media-placeholder{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:12px;
+  font-family:var(--mono);font-size:11px;color:var(--text3);
+}
+.proj-media-placeholder .big-icon{font-size:3rem;line-height:1}
+/* OG image wrappers */
+.proj-og{width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.85}
+.proj-og:hover{opacity:1}
+
+/* ── EXPERIENCE ── */
+#experience{padding:100px 0;background:var(--bg)}
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--cyan),var(--violet),var(--rose))}
+.tl-item{position:relative;margin-bottom:2.8rem;padding-bottom:.5rem}
+.tl-item::before{content:'';position:absolute;left:-2rem;top:8px;width:10px;height:10px;border-radius:50%;border:2px solid var(--bg)}
+.tl-item:nth-child(1)::before{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+.tl-item:nth-child(2)::before{background:var(--violet);box-shadow:0 0 8px var(--violet)}
+.tl-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.4rem}
+.tl-title{font-family:var(--sans);font-size:1rem;font-weight:700;color:var(--text)}
+.tl-company{font-size:13px;color:var(--cyan);margin-bottom:.35rem}
+.tl-item:nth-child(2) .tl-company{color:var(--violet)}
+.tl-date{font-family:var(--mono);font-size:11px;color:var(--text3);white-space:nowrap;padding-top:3px}
+.tl-body{font-size:13px;color:var(--text2);line-height:1.85}
+.tl-body li{margin-left:1.2rem;margin-bottom:.35rem}
+
+/* ── RESEARCH ── */
+#research{padding:100px 0;background:var(--bg2)}
+.res-card{border-radius:14px;padding:2rem;margin-bottom:1.5rem;border-left:4px solid;background:var(--bg3);border-top:1px solid var(--border);border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.res-card:nth-child(1){border-left-color:var(--violet)}
+.res-card:nth-child(2){border-left-color:var(--cyan)}
+.res-card:nth-child(3){border-left-color:var(--rose)}
+.res-title{font-family:var(--sans);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.4rem}
+.res-meta{font-family:var(--mono);font-size:11px;letter-spacing:.04em;margin-bottom:.75rem}
+.res-card:nth-child(1) .res-meta{color:var(--violet)}
+.res-card:nth-child(2) .res-meta{color:var(--cyan)}
+.res-card:nth-child(3) .res-meta{color:var(--rose)}
+.res-desc{font-size:13px;color:var(--text2);line-height:1.8}
+
+/* ── EDUCATION ── */
+#education{padding:100px 0;background:var(--bg)}
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:1.5rem}
+.edu-card{border-radius:14px;padding:1.75rem;border:1px solid}
+.ec-1{background:rgba(167,139,250,.06);border-color:rgba(167,139,250,.2)}
+.ec-2{background:rgba(34,211,238,.04);border-color:rgba(34,211,238,.15)}
+.ec-3{background:rgba(251,191,36,.04);border-color:rgba(251,191,36,.15);grid-column:1/-1}
+.edu-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+.edu-deg{font-family:var(--sans);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.edu-school{font-size:13px}
+.ec-1 .edu-school{color:var(--violet)}
+.ec-2 .edu-school{color:var(--cyan)}
+.ec-3 .edu-school{color:var(--amber)}
+.edu-detail{font-size:11px;color:var(--text3);font-family:var(--mono);margin-top:3px}
+.edu-badge{font-family:var(--mono);font-size:10px;padding:4px 10px;border-radius:4px;white-space:nowrap;flex-shrink:0;border:1px solid}
+.ec-1 .edu-badge{color:var(--violet);border-color:rgba(167,139,250,.4);background:var(--violet-b)}
+.ec-2 .edu-badge{color:var(--cyan);border-color:rgba(34,211,238,.4);background:var(--cyan-b)}
+.ec-3 .edu-badge{color:var(--amber);border-color:rgba(251,191,36,.4);background:var(--amber-b)}
+.edu-body{font-size:12px;color:var(--text2);line-height:1.8}
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:1rem}
+.cert-item{font-size:12px;color:var(--text2);display:flex;align-items:flex-start;gap:6px;line-height:1.5}
+.cert-item::before{content:'✓';color:var(--amber);flex-shrink:0;font-size:11px;margin-top:1px;font-weight:700}
+
+/* ── GITHUB ── */
+#github{padding:100px 0;background:var(--bg2)}
+.gh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
+.gh-stat{border-radius:12px;padding:1.25rem;text-align:center;border:1px solid}
+.gs-1{background:var(--cyan-b);border-color:rgba(34,211,238,.2)} .gs-1 .gsv{color:var(--cyan)}
+.gs-2{background:var(--violet-b);border-color:rgba(167,139,250,.2)} .gs-2 .gsv{color:var(--violet)}
+.gs-3{background:var(--rose-b);border-color:rgba(251,113,133,.2)} .gs-3 .gsv{color:var(--rose)}
+.gs-4{background:var(--lime-b);border-color:rgba(134,239,172,.2)} .gs-4 .gsv{color:var(--lime)}
+.gsv{font-family:var(--mono);font-size:1.7rem;font-weight:600;line-height:1}
+.gsl{font-size:11px;color:var(--text3);margin-top:6px;letter-spacing:.04em}
+.lang-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:1.75rem;margin-bottom:1.5rem}
+.lang-row{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.lang-row:last-child{margin-bottom:0}
+.lang-name{font-family:var(--mono);font-size:12px;color:var(--text2);width:95px;flex-shrink:0}
+.lang-track{flex:1;height:7px;background:var(--bg4);border-radius:4px;overflow:hidden}
+.lang-fill{height:100%;border-radius:4px}
+.lang-pct{font-family:var(--mono);font-size:11px;color:var(--text3);width:34px;text-align:right}
+
+/* ── CONTACT ── */
+#contact{padding:100px 0;background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.contact-p{color:var(--text2);font-size:15px;margin-bottom:1.5rem;line-height:1.85}
+.clinks{display:flex;flex-direction:column;gap:.85rem}
+.clink{
+  display:flex;align-items:center;gap:12px;text-decoration:none;
+  color:var(--text2);font-size:14px;padding:12px 16px;border-radius:10px;
+  border:1px solid var(--border);background:var(--bg3);transition:all .2s
+}
+.clink:hover{border-color:var(--cyan);color:var(--cyan)}
+.clink-icon{width:34px;height:34px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.ci-1{background:var(--rose-b);border:1px solid rgba(251,113,133,.25)}
+.ci-2{background:var(--cyan-b);border:1px solid rgba(34,211,238,.25)}
+.ci-3{background:var(--violet-b);border:1px solid rgba(167,139,250,.25)}
+.ci-4{background:var(--amber-b);border:1px solid rgba(251,191,36,.25)}
+.ci-5{background:var(--lime-b);border:1px solid rgba(134,239,172,.25)}
+
+.form-wrapper{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:2rem}
+.form-eyebrow{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:.1em;margin-bottom:1.25rem}
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:1rem}
+.fg label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase}
+.fg input,.fg textarea{background:var(--bg4);border:1px solid var(--border2);border-radius:7px;padding:10px 14px;color:var(--text);font-size:14px;font-family:var(--body);outline:none;transition:border-color .2s;resize:vertical}
+.fg input:focus,.fg textarea:focus{border-color:var(--cyan)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--text3)}
+.cf-status{font-family:var(--mono);font-size:12px;color:var(--lime);margin-top:8px;display:none}
+
+/* ── FOOTER ── */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem;text-align:center;font-family:var(--mono);font-size:12px;color:var(--text3)}
+footer a{color:var(--cyan);text-decoration:none}
+
+/* ── FADE ── */
+.fu{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.fu.vis{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .gh-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none}
+}
+@media(max-width:600px){
+  .hero-metrics{flex-wrap:wrap}
+  .hero-metric{flex:1 1 45%}
+  .projects-grid{grid-template-columns:1fr}
+  .proj-card[style*="grid-column:span 2"]{grid-column:auto}
+  .cert-grid{grid-template-columns:1fr}
+  .edu-card.ec-3{grid-column:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">AG<span>://</span>portfolio</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow">Robotics &amp; Perception Engineer</div>
+      <h1 class="hero-name"><span>Aditya</span><br>Ghadshi</h1>
+      <div class="hero-title">Visual SLAM · TensorRT Edge AI · ROS 2 Humble</div>
+      <p class="hero-desc">
+        Building the perception layer that lets robots understand their world in real time.
+        M.S. CS candidate at Texas A&amp;M–Kingsville researching collaborative multi-vehicle
+        Visual SLAM for Digital Twin synchronization. I push inference to sub-millisecond latency
+        on Jetson Orin at the edge.
+      </p>
+
+      <div class="hero-metrics">
+        <div class="hero-metric m1">
+          <div class="hero-metric-val">32×</div>
+          <div class="hero-metric-label">TensorRT speedup</div>
+        </div>
+        <div class="hero-metric m2">
+          <div class="hero-metric-val">2,203</div>
+          <div class="hero-metric-label">FPS on Tesla T4</div>
+        </div>
+        <div class="hero-metric m3">
+          <div class="hero-metric-val">0.45ms</div>
+          <div class="hero-metric-label">feature extraction</div>
+        </div>
+        <div class="hero-metric m4">
+          <div class="hero-metric-val">76%</div>
+          <div class="hero-metric-label">EKF drift reduction</div>
+        </div>
+      </div>
+
+      <div class="hero-btns">
+        <a href="mailto:aditya.r.ghadshi@gmail.com" class="btn-primary">✉ Get in Touch</a>
+        <a href="https://github.com/Aditya2545" target="_blank" class="btn-outline">⌥ GitHub</a>
+        <a href="https://linkedin.com/in/aditya-r-ghadshi" target="_blank" class="btn-outline">↗ LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-avatar">AG</div>
+      <div class="hero-card-name">Aditya Ghadshi</div>
+      <div class="hero-card-sub">Austin, TX · Open to relocation</div>
+      <div class="hero-status"><span class="status-dot"></span>Open to new roles</div>
+      <div style="width:100%;height:1px;background:var(--border)"></div>
+      <div class="hero-meta">
+        F-1 STEM OPT · H-1B sponsorship needed<br>
+        M.S. CS · TAMUK · May 2026<br>
+        SE @ Capgemini · 2018–2020
+      </div>
+      <div class="hero-social">
+        <a href="mailto:aditya.r.ghadshi@gmail.com" title="Email">✉</a>
+        <a href="https://github.com/Aditya2545" target="_blank" title="GitHub">⌥</a>
+        <a href="https://linkedin.com/in/aditya-r-ghadshi" target="_blank" title="LinkedIn">in</a>
+        <a href="tel:3614556284" title="Phone">☏</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec-violet">
+  <div class="container">
+    <div class="section-header fu">
+      <div class="section-eyebrow">// 01 — about</div>
+      <h2 class="section-title">Who I Am</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fu">
+        <p>I'm a robotics engineer living at the intersection of <strong>perception, edge compute, and real-time inference</strong>. My research at the AI-Cyb Lab (Texas A&amp;M–Kingsville) under Dr. Ayush Goyal (Ph.D., Oxford) focuses on collaborative multi-vehicle Visual SLAM to build live Digital Twin synchronization for a fleet of Quanser QCar autonomous vehicles — targeting IEEE ICRA / IROS publication.</p>
+        <p>Before academia I spent two years at <strong>Capgemini Technology Services</strong> in Mumbai as a Software Engineer — which gave me the production discipline most ML researchers lack. I write code that ships, not code that runs in notebooks.</p>
+        <p>My current focus: <strong>TensorRT / CUDA inference optimization</strong> on Jetson Orin, SuperPoint / SuperGlue / MASt3R feature matching, LIO-SAM with GTSAM factor graphs, and 5-state EKF fusion in C++17 from scratch. Six Universal Robots Academy certifications.</p>
+        <div class="tags">
+          <span class="tag tag-cyan">Visual SLAM</span>
+          <span class="tag tag-violet">TensorRT / CUDA</span>
+          <span class="tag tag-rose">ROS 2 Humble</span>
+          <span class="tag tag-amber">Autonomous Systems</span>
+          <span class="tag tag-lime">Edge AI</span>
+          <span class="tag tag-orange">Digital Twins</span>
+          <span class="tag tag-cyan">C++17</span>
+          <span class="tag tag-violet">Computer Vision</span>
+          <span class="tag tag-rose">GTSAM Factor Graphs</span>
+          <span class="tag tag-lime">Jetson Orin</span>
+        </div>
+      </div>
+      <div class="fu">
+        <div class="stat-grid">
+          <div class="stat-card stat-cyan"><div class="sv">5+</div><div class="sl">Years experience</div></div>
+          <div class="stat-card stat-violet"><div class="sv">9</div><div class="sl">GitHub repos</div></div>
+          <div class="stat-card stat-lime"><div class="sv">32×</div><div class="sl">Best speedup</div></div>
+          <div class="stat-card stat-amber"><div class="sv">ICRA</div><div class="sl">Target venue</div></div>
+        </div>
+        <div class="info-card">
+          <p>M.S. CS candidate graduating <strong style="color:var(--text)">May 2026</strong> · Assistant Researcher, AI-Cyb Lab, Texas A&amp;M–Kingsville. Working the full perception stack: raw camera frames → TensorRT feature extraction → collaborative SLAM → factor-graph optimization → live Digital Twin dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="sec-cyan">
+  <div class="container">
+    <div class="section-header fu">
+      <div class="section-eyebrow">// 02 — skills</div>
+      <h2 class="section-title">Technical Stack</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="skills-grid">
+
+      <div class="skill-cat sc-cyan fu">
+        <div class="skill-cat-head">
+          <div class="skill-icon">⌨</div>
+          <span class="skill-cat-title">Languages</span>
+        </div>
+        <div class="skill-pills">
+          <span class="pill hi">C++17</span><span class="pill hi">Python 3</span><span class="pill hi">CUDA</span>
+          <span class="pill">CMake</span><span class="pill">Bash</span><span class="pill">TypeScript</span>
+        </div>
+      </div>
+
+      <div class="skill-cat sc-violet fu">
+        <div class="skill-cat-head">
+          <div class="skill-icon">🤖</div>
+          <span class="skill-cat-title">Robotics Frameworks</span>
+        </div>
+        <div class="skill-pills">
+          <span class="pill hi">ROS 2 Humble</span><span class="pill hi">Nav2</span><span class="pill hi">BehaviorTree.CPP v4</span>
+          <span class="pill hi">SLAM Toolbox</span><span class="pill hi">LIO-SAM</span>
+          <span class="pill">TF2</span><span class="pill">AMCL</span><span class="pill">RViz2</span><span class="pill">URDF</span>
+        </div>
+      </div>
+
+      <div class="skill-cat sc-rose fu">
+        <div class="skill-cat-head">
+          <div class="skill-icon">🧠</div>
+          <span class="skill-cat-title">AI / ML &amp; Perception</span>
+        </div>
+        <div class="skill-pills">
+          <span class="pill hi">TensorRT FP16</span><span class="pill hi">ONNX Runtime</span><span class="pill hi">PyTorch</span>
+          <span class="pill hi">SuperPoint / SuperGlue</span><span class="pill hi">MASt3R</span>
+          <span class="pill">OpenCV</span><span class="pill">GTSAM</span><span class="pill">V4L2</span>
+        </div>
+      </div>
+
+      <div class="skill-cat sc-amber fu">
+        <div class="skill-cat-head">
+          <div class="skill-icon">📡</div>
+          <span class="skill-cat-title">State Estimation</span>
+        </div>
+        <div class="skill-pills">
+          <span class="pill hi">EKF (5-state C++17)</span><span class="pill hi">Factor Graph Opt.</span>
+          <span class="pill hi">Particle Filter</span>
+          <span class="pill">Kalman Filter</span><span class="pill">PID Control</span><span class="pill">DH Parameters</span>
+        </div>
+      </div>
+
+      <div class="skill-cat sc-lime fu">
+        <div class="skill-cat-head">
+          <div class="skill-icon">🔲</div>
+          <span class="skill-cat-title">Embedded &amp; Hardware</span>
+        </div>
+        <div class="skill-pills">
+          <span class="pill hi">Jetson Orin</span><span class="pill hi">Tesla T4</span><span class="pill hi">TurtleBot3</span>
+          <span class="pill hi">Quanser QCar</span>
+          <span class="pill">Universal Robots</span><span class="pill">Raspberry Pi</span>
+        </div>
+      </div>
+
+      <div class="skill-cat sc-orange fu">
+        <div class="skill-cat-head">
+          <div class="skill-icon">⚙</div>
+          <span class="skill-cat-title">Simulation &amp; DevOps</span>
+        </div>
+        <div class="skill-pills">
+          <span class="pill hi">Isaac Sim</span><span class="pill hi">MuJoCo 3</span><span class="pill hi">Gazebo</span>
+          <span class="pill">Docker</span><span class="pill">GitHub Actions</span><span class="pill">pytest / gtest</span>
+          <span class="pill">RunPod / Vast.ai</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="sec-rose">
+  <div class="container">
+    <div class="section-header fu">
+      <div class="section-eyebrow">// 03 — projects</div>
+      <h2 class="section-title">Featured Work</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="filter-row fu">
+      <button class="flt active" onclick="filterP('all',this)">All</button>
+      <button class="flt" onclick="filterP('edge',this)">Edge AI</button>
+      <button class="flt" onclick="filterP('slam',this)">SLAM</button>
+      <button class="flt" onclick="filterP('ros2',this)">ROS 2</button>
+      <button class="flt" onclick="filterP('cpp',this)">C++17</button>
+    </div>
+
+    <div class="projects-grid" id="pgrid">
+
+      <!-- ① qcar-digital-twin — REAL GIF from GitHub -->
+      <a href="https://github.com/Aditya2545/qcar-digital-twin-sim" target="_blank"
+         class="proj-card pc-violet" data-tags="slam" style="grid-column:span 2">
+        <div class="proj-media">
+          <img src="https://github.com/Aditya2545/qcar-digital-twin-sim/raw/main/media/Qcar_demo.gif"
+               alt="QCar Digital Twin live demo — multi-vehicle SLAM visualizer" loading="lazy">
+          <div class="proj-media-overlay"></div>
+          <span class="proj-media-badge pb-violet">🎬 LIVE DEMO GIF</span>
+        </div>
+        <div class="proj-top">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div class="proj-icon pi-violet">🚗</div>
+            <div class="proj-title" style="margin:0">qcar-digital-twin-sim</div>
+          </div>
+          <span class="proj-badge pb-violet">RESEARCH</span>
+        </div>
+        <div class="proj-desc">Python simulation of Real-Time Digital Twin Synchronization via Collaborative Autonomous Vehicle Visual SLAM using Quanser QCars. Implements Neural Map Fusion, Self-Supervised Divergence Detection, and a pygame visualizer with 30+ unit tests. The GIF above shows the live side-by-side physical lab vs digital twin view.</div>
+        <div class="proj-ach pa-violet"><span>▸</span>Models full multi-vehicle SLAM → Digital Twin pipeline · targeting IEEE ICRA / IROS</div>
+        <div class="proj-tech">
+          <span class="tech">Python</span><span class="tech">Visual SLAM</span><span class="tech">Digital Twins</span><span class="tech">pygame</span><span class="tech">NeuralMapFusion</span><span class="tech">DivergenceDetector</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-lang"><span class="ldot" style="background:#3572A5"></span>Python · 30+ tests</span>
+          <span class="proj-link lv">View on GitHub ↗</span>
+        </div>
+      </a>
+
+      <!-- ② superpoint-tensorrt — GitHub OG preview -->
+      <a href="https://github.com/Aditya2545/superpoint-tensorrt" target="_blank"
+         class="proj-card pc-cyan" data-tags="edge slam">
+        <div class="proj-media">
+          <img class="proj-og"
+               src="https://opengraph.githubassets.com/316008c92cefd47290aa2256170bab1ff961d51996c46fddf2c5fd7846f68404/Aditya2545/superpoint-tensorrt"
+               alt="superpoint-tensorrt GitHub preview" loading="lazy">
+          <div class="proj-media-overlay"></div>
+          <span class="proj-media-badge pb-cyan">⚡ EDGE AI</span>
+        </div>
+        <div class="proj-top">
+          <div class="proj-icon pi-cyan">⚡</div>
+          <span class="proj-badge pb-cyan">FEATURED</span>
+        </div>
+        <div class="proj-title">superpoint-tensorrt</div>
+        <div class="proj-desc">SuperPoint keypoint detector: PyTorch → ONNX → TensorRT FP16 pipeline targeting Jetson Orin for real-time Visual SLAM feature extraction.</div>
+        <div class="proj-ach pa-cyan"><span>▸</span>32× speedup: 14.66ms → 0.45ms · 2,203 FPS on Tesla T4</div>
+        <div class="proj-tech">
+          <span class="tech">Python</span><span class="tech">TensorRT FP16</span><span class="tech">PyTorch</span><span class="tech">ONNX</span><span class="tech">CUDA</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-lang"><span class="ldot" style="background:#3572A5"></span>Python</span>
+          <span class="proj-link lc">GitHub ↗</span>
+        </div>
+      </a>
+
+      <!-- ③ warehouse_safety_monitor — OG image -->
+      <a href="https://github.com/Aditya2545/warehouse_safety_monitor" target="_blank"
+         class="proj-card pc-amber" data-tags="ros2 cpp">
+        <div class="proj-media">
+          <img class="proj-og"
+               src="https://opengraph.githubassets.com/08f64baa7fe08b51f86025b2778c80e1d15a84e48c2421cad3aecd88f4009197/Aditya2545/warehouse_safety_monitor"
+               alt="warehouse_safety_monitor GitHub preview" loading="lazy">
+          <div class="proj-media-overlay"></div>
+          <span class="proj-media-badge pb-amber">★ STARRED</span>
+        </div>
+        <div class="proj-top">
+          <div class="proj-icon pi-amber">🏭</div>
+          <span class="proj-badge pb-amber">★ STARRED</span>
+        </div>
+        <div class="proj-title">warehouse_safety_monitor</div>
+        <div class="proj-desc">ROS 2 C++ warehouse obstacle monitor — SAFE / WARNING / STOP state machine with simulated LiDAR and heartbeat watchdog node.</div>
+        <div class="proj-ach pa-amber"><span>▸</span>Full 3-state safety machine + heartbeat · configurable distance thresholds</div>
+        <div class="proj-tech">
+          <span class="tech">C++</span><span class="tech">ROS 2</span><span class="tech">State Machine</span><span class="tech">LiDAR Sim</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-lang"><span class="ldot" style="background:#f34b7d"></span>C++</span>
+          <span class="proj-link la">GitHub ↗</span>
+        </div>
+      </a>
+
+      <!-- ④ robot_arm_kinematics — OG image -->
+      <a href="https://github.com/Aditya2545/robot_arm_kinematics" target="_blank"
+         class="proj-card pc-orange" data-tags="cpp">
+        <div class="proj-media">
+          <img class="proj-og"
+               src="https://opengraph.githubassets.com/5f331f0ac4285d75b791ebafa2f5b97b951054ec86a254568c54613d80ed2eed/Aditya2545/robot_arm_kinematics"
+               alt="robot_arm_kinematics GitHub preview" loading="lazy">
+          <div class="proj-media-overlay"></div>
+          <span class="proj-media-badge pb-orange">🦾 C++17</span>
+        </div>
+        <div class="proj-top">
+          <div class="proj-icon pi-orange">🦾</div>
+          <span class="proj-badge pb-orange">C++17</span>
+        </div>
+        <div class="proj-title">robot_arm_kinematics</div>
+        <div class="proj-desc">Standalone 6-DOF IK/FK library in C++17 — no ROS, no Eigen. DH-parameter FK, damped-least-squares IK, CLI tool, Doxygen docs. UR5-like model included.</div>
+        <div class="proj-ach pa-orange"><span>▸</span>Zero external deps · std::optional IK failure signalling · bash regression harness</div>
+        <div class="proj-tech">
+          <span class="tech">C++17</span><span class="tech">CMake</span><span class="tech">6-DOF IK/FK</span><span class="tech">DH Params</span><span class="tech">Doxygen</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-lang"><span class="ldot" style="background:#f34b7d"></span>C++</span>
+          <span class="proj-link lo">GitHub ↗</span>
+        </div>
+      </a>
+
+      <!-- ⑤ ros2_ekf_fusion — placeholder with animated bars -->
+      <a href="https://github.com/Aditya2545" target="_blank"
+         class="proj-card pc-rose" data-tags="ros2 cpp slam">
+        <div class="proj-media" style="background:var(--bg4)">
+          <div class="proj-media-placeholder">
+            <div class="big-icon">📡</div>
+            <div style="font-size:12px;color:var(--rose);text-align:center;line-height:1.6">5-state EKF<br>C++17 from scratch</div>
+            <div style="display:flex;gap:6px;align-items:flex-end;height:40px">
+              <div style="width:8px;background:var(--rose);border-radius:2px;animation:bar1 1.4s ease-in-out infinite;opacity:.8"></div>
+              <div style="width:8px;background:var(--violet);border-radius:2px;animation:bar2 1.4s ease-in-out infinite;opacity:.8"></div>
+              <div style="width:8px;background:var(--cyan);border-radius:2px;animation:bar3 1.4s ease-in-out infinite;opacity:.8"></div>
+              <div style="width:8px;background:var(--rose);border-radius:2px;animation:bar1 1.4s ease-in-out infinite .2s;opacity:.8"></div>
+              <div style="width:8px;background:var(--violet);border-radius:2px;animation:bar2 1.4s ease-in-out infinite .3s;opacity:.8"></div>
+            </div>
+          </div>
+          <div class="proj-media-overlay"></div>
+          <span class="proj-media-badge pb-rose">📡 EKF FUSION</span>
+        </div>
+        <div class="proj-top">
+          <div class="proj-icon pi-rose">📡</div>
+          <span class="proj-badge pb-rose">C++17</span>
+        </div>
+        <div class="proj-title">ros2_ekf_fusion</div>
+        <div class="proj-desc">5-state EKF sensor fusion built from scratch in C++17 — no external libraries. Fuses IMU + wheel odometry. Includes Python trajectory simulator and full gtest suite.</div>
+        <div class="proj-ach pa-rose"><span>▸</span>~76% drift reduction vs. raw odometry · gtest + Python simulator</div>
+        <div class="proj-tech">
+          <span class="tech">C++17</span><span class="tech">ROS 2</span><span class="tech">EKF</span><span class="tech">gtest</span><span class="tech">CMake</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-lang"><span class="ldot" style="background:#f34b7d"></span>C++</span>
+          <span class="proj-link lr">GitHub ↗</span>
+        </div>
+      </a>
+
+      <!-- ⑥ ros2_bt_navigation — placeholder -->
+      <a href="https://github.com/Aditya2545" target="_blank"
+         class="proj-card pc-lime" data-tags="ros2 slam cpp">
+        <div class="proj-media" style="background:var(--bg4)">
+          <div class="proj-media-placeholder">
+            <div class="big-icon">🗺</div>
+            <div style="font-size:12px;color:var(--lime);text-align:center;line-height:1.6">Nav2 + BT.CPP v4<br>on physical TurtleBot3</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;max-width:200px;justify-content:center">
+              <span style="font-family:monospace;font-size:9px;padding:2px 6px;border-radius:3px;background:rgba(134,239,172,.15);color:var(--lime);border:1px solid rgba(134,239,172,.3)">SLAM Toolbox</span>
+              <span style="font-family:monospace;font-size:9px;padding:2px 6px;border-radius:3px;background:rgba(134,239,172,.15);color:var(--lime);border:1px solid rgba(134,239,172,.3)">AMCL</span>
+              <span style="font-family:monospace;font-size:9px;padding:2px 6px;border-radius:3px;background:rgba(134,239,172,.15);color:var(--lime);border:1px solid rgba(134,239,172,.3)">Nav2</span>
+            </div>
+          </div>
+          <div class="proj-media-overlay"></div>
+          <span class="proj-media-badge pb-lime">🤖 HARDWARE</span>
+        </div>
+        <div class="proj-top">
+          <div class="proj-icon pi-lime">🗺</div>
+          <span class="proj-badge pb-lime">HARDWARE</span>
+        </div>
+        <div class="proj-title">ros2_bt_navigation</div>
+        <div class="proj-desc">Nav2 + BehaviorTree.CPP v4 + AMCL + SLAM Toolbox full autonomous navigation on a real TurtleBot3. Pose-graph mapping and particle-filter localization — not simulation.</div>
+        <div class="proj-ach pa-lime"><span>▸</span>Physical hardware deployment — slam → localize → navigate end-to-end</div>
+        <div class="proj-tech">
+          <span class="tech">C++17</span><span class="tech">Nav2</span><span class="tech">BehaviorTree.CPP v4</span><span class="tech">AMCL</span><span class="tech">SLAM Toolbox</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-lang"><span class="ldot" style="background:#f34b7d"></span>C++</span>
+          <span class="proj-link ll">GitHub ↗</span>
+        </div>
+      </a>
+
+      <!-- ⑦ sensor_pipeline -->
+      <a href="https://github.com/Aditya2545/sensor_pipeline" target="_blank"
+         class="proj-card pc-cyan" data-tags="ros2">
+        <div class="proj-media" style="background:var(--bg4)">
+          <div class="proj-media-placeholder">
+            <div class="big-icon">📷</div>
+            <div style="font-size:12px;color:var(--cyan);text-align:center;line-height:1.6">ROS 2 Sensor Pipeline<br>pytest + GitHub Actions CI</div>
+          </div>
+          <div class="proj-media-overlay"></div>
+          <span class="proj-media-badge pb-cyan">✓ CI / CD</span>
+        </div>
+        <div class="proj-top">
+          <div class="proj-icon pi-cyan">📷</div>
+        </div>
+        <div class="proj-title">ros2_sensor_pipeline</div>
+        <div class="proj-desc">ROS 2 Humble sensor pipeline — custom SensorReading.msg, moving-average filter, CSV logger, YAML params, 8 pytest tests, GitHub Actions CI.</div>
+        <div class="proj-ach pa-cyan"><span>▸</span>8 pytest unit tests + CI — production-grade ROS 2 packaging patterns</div>
+        <div class="proj-tech">
+          <span class="tech">Python</span><span class="tech">ROS 2</span><span class="tech">Custom Msgs</span><span class="tech">pytest</span><span class="tech">GitHub Actions</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-lang"><span class="ldot" style="background:#3572A5"></span>Python</span>
+          <span class="proj-link lc">GitHub ↗</span>
+        </div>
+      </a>
+
+      <!-- ⑧ my_digital_twin -->
+      <a href="https://github.com/Aditya2545/my_digital_twin" target="_blank"
+         class="proj-card pc-violet" data-tags="ros2 slam">
+        <div class="proj-media" style="background:var(--bg4)">
+          <div class="proj-media-placeholder">
+            <div class="big-icon">🔷</div>
+            <div style="font-size:12px;color:var(--violet);text-align:center;line-height:1.6">ROS 2 Digital Twin<br>TF2 · RViz2 · URDF</div>
+          </div>
+          <div class="proj-media-overlay"></div>
+          <span class="proj-media-badge pb-violet">🔷 RViz2</span>
+        </div>
+        <div class="proj-top">
+          <div class="proj-icon pi-violet">🔷</div>
+        </div>
+        <div class="proj-title">my_digital_twin</div>
+        <div class="proj-desc">Real-time robot digital twin using ROS 2 Humble, TF2, and RViz2. Live TF2 frame hierarchy → 3D robot state visualization. Conceptual foundation of the QCar SLAM research.</div>
+        <div class="proj-ach pa-violet"><span>▸</span>Live TF2 frame hierarchy → RViz2 3D state visualization in real time</div>
+        <div class="proj-tech">
+          <span class="tech">Python</span><span class="tech">ROS 2</span><span class="tech">TF2</span><span class="tech">RViz2</span><span class="tech">URDF</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-lang"><span class="ldot" style="background:#3572A5"></span>Python</span>
+          <span class="proj-link lv">GitHub ↗</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="sec-amber">
+  <div class="container">
+    <div class="section-header fu">
+      <div class="section-eyebrow">// 04 — experience</div>
+      <h2 class="section-title">Professional History</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item fu">
+        <div class="tl-head">
+          <div>
+            <div class="tl-title">Assistant Researcher</div>
+            <div class="tl-company">AI-Cyb Lab, Texas A&amp;M University–Kingsville · Dr. Ayush Goyal (Ph.D., Oxford)</div>
+          </div>
+          <div class="tl-date">2024 – Present</div>
+        </div>
+        <ul class="tl-body">
+          <li>Researching real-time Digital Twin synchronization for a fleet of Quanser QCar autonomous vehicles using collaborative multi-vehicle Visual SLAM.</li>
+          <li>Optimized SuperPoint via PyTorch → ONNX → TensorRT FP16 — <strong>32× speedup</strong> (14.66ms → 0.45ms, 2,203 FPS on Tesla T4).</li>
+          <li>Targeting edge deployment on NVIDIA Jetson Orin Ampere for sub-millisecond feature extraction in the live SLAM loop.</li>
+          <li>Built 5-state EKF fusion node (C++17) from scratch, achieving ~76% drift reduction vs. raw odometry; full gtest coverage.</li>
+          <li>Deployed LIO-SAM with GTSAM factor-graph optimization on native Ubuntu 22.04 for 3D LiDAR-inertial SLAM.</li>
+          <li>Targeting IEEE ICRA / IROS / RA-L publication.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item fu">
+        <div class="tl-head">
+          <div>
+            <div class="tl-title">Software Engineer</div>
+            <div class="tl-company">Capgemini Technology Services · Mumbai, India</div>
+          </div>
+          <div class="tl-date">2018 – 2020</div>
+        </div>
+        <ul class="tl-body">
+          <li>Delivered production software across enterprise client projects, building the engineering discipline that underpins all subsequent research.</li>
+          <li>Developed and maintained backend services and data pipelines; experienced with CI/CD, code review, and production incident response.</li>
+          <li>Collaborated with cross-functional stakeholders to translate business requirements into technical specifications.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research" class="sec-violet">
+  <div class="container">
+    <div class="section-header fu">
+      <div class="section-eyebrow">// 05 — research</div>
+      <h2 class="section-title">Research &amp; Publications</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="res-card fu">
+      <div class="res-title">Real-Time Digital Twin Synchronization via Collaborative Multi-Vehicle Visual SLAM</div>
+      <div class="res-meta">In Progress · Target: IEEE ICRA / IROS / RA-L · Texas A&amp;M–Kingsville AI-Cyb Lab</div>
+      <div class="res-desc">Investigates how a fleet of Quanser QCar autonomous vehicles can collaboratively build a shared map (Digital Twin) in real time using Visual SLAM. Core contributions include Neural Map Fusion for per-vehicle submap merging, a Self-Supervised Divergence Detector for consistency monitoring, and a TensorRT-optimized feature extraction pipeline (32× speedup, sub-ms on Jetson Orin). Integrates SuperPoint/SuperGlue feature matching, GTSAM factor-graph optimization (LIO-SAM), and a 5-state C++17 EKF for multi-sensor fusion.</div>
+    </div>
+
+    <div class="res-card fu">
+      <div class="res-title">Camera–LiDAR Fusion for 3D Multi-Object Tracking (KITTI Benchmark)</div>
+      <div class="res-meta">Portfolio Project · ROS 2 · C++17</div>
+      <div class="res-desc">Complete camera-LiDAR fusion and 3D multi-object tracking pipeline on the KITTI benchmark. Includes ROS 2 fusion and tracker nodes written in C++17, with TensorRT inference benchmarked separately on Tesla T4. Demonstrates the full perception stack from raw sensor input through 3D bounding box estimation and track management.</div>
+    </div>
+
+    <div class="res-card fu">
+      <div class="res-title">6-DOF Robot Arm Kinematics — Pure C++17 Library</div>
+      <div class="res-meta">Open Source · github.com/Aditya2545/robot_arm_kinematics</div>
+      <div class="res-desc">Standalone kinematics library implementing Denavit-Hartenberg forward kinematics and damped-least-squares inverse kinematics for a 6-DOF manipulator — zero external dependencies. CMake static/shared builds, CLI tool, and complete Doxygen documentation, demonstrating the mathematical foundations underlying manipulator control.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="sec-amber">
+  <div class="container">
+    <div class="section-header fu">
+      <div class="section-eyebrow">// 06 — education</div>
+      <h2 class="section-title">Education &amp; Certifications</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="edu-grid">
+
+      <div class="edu-card ec-1 fu">
+        <div class="edu-card-head">
+          <div>
+            <div class="edu-deg">M.S. Computer Science</div>
+            <div class="edu-school">Texas A&amp;M University–Kingsville</div>
+            <div class="edu-detail">Focus: Robotics · Autonomous Systems · AI</div>
+          </div>
+          <span class="edu-badge">May 2026</span>
+        </div>
+        <div class="edu-body">Research track under Dr. Ayush Goyal (Ph.D., Oxford) at the AI-Cyb Lab. Thesis-equivalent research targeting IEEE ICRA / IROS / RA-L in collaborative Visual SLAM.</div>
+      </div>
+
+      <div class="edu-card ec-2 fu">
+        <div class="edu-card-head">
+          <div>
+            <div class="edu-deg">M.S. Information Technology</div>
+            <div class="edu-school">Patkar College, University of Mumbai</div>
+            <div class="edu-detail">Software Engineering track</div>
+          </div>
+          <span class="edu-badge">2018</span>
+        </div>
+        <div class="edu-body">Graduate studies in information systems, software architecture, and database design. Foundation for subsequent industry experience at Capgemini.</div>
+      </div>
+
+      <div class="edu-card ec-3 fu">
+        <div class="edu-card-head">
+          <div>
+            <div class="edu-deg">Universal Robots Academy</div>
+            <div class="edu-school">6 Professional Certifications</div>
+          </div>
+          <span class="edu-badge">Certified</span>
+        </div>
+        <div class="cert-grid">
+          <span class="cert-item">UR Fundamentals of Robotics</span>
+          <span class="cert-item">UR Collaborative Robot Programming</span>
+          <span class="cert-item">UR Safety Configuration</span>
+          <span class="cert-item">UR Scripting for Operators</span>
+          <span class="cert-item">UR Gripper Integration</span>
+          <span class="cert-item">UR System Integration</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GITHUB -->
+<section id="github" class="sec-lime">
+  <div class="container">
+    <div class="section-header fu">
+      <div class="section-eyebrow">// 07 — github</div>
+      <h2 class="section-title">GitHub Activity</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="gh-grid fu">
+      <div class="gh-stat gs-1"><div class="gsv">9</div><div class="gsl">Public Repos</div></div>
+      <div class="gh-stat gs-2"><div class="gsv">C++</div><div class="gsl">Primary Language</div></div>
+      <div class="gh-stat gs-3"><div class="gsv">6</div><div class="gsl">UR Certs</div></div>
+      <div class="gh-stat gs-4"><div class="gsv">30+</div><div class="gsl">Unit Tests</div></div>
+    </div>
+
+    <div class="lang-card fu">
+      <div style="font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:.06em;margin-bottom:1.25rem">LANGUAGES BY REPO USAGE</div>
+      <div class="lang-row">
+        <span class="lang-name">C++17</span>
+        <div class="lang-track"><div class="lang-fill" style="width:55%;background:var(--rose)"></div></div>
+        <span class="lang-pct">55%</span>
+      </div>
+      <div class="lang-row">
+        <span class="lang-name">Python 3</span>
+        <div class="lang-track"><div class="lang-fill" style="width:38%;background:var(--cyan)"></div></div>
+        <span class="lang-pct">38%</span>
+      </div>
+      <div class="lang-row">
+        <span class="lang-name">CMake</span>
+        <div class="lang-track"><div class="lang-fill" style="width:5%;background:var(--amber)"></div></div>
+        <span class="lang-pct">5%</span>
+      </div>
+      <div class="lang-row">
+        <span class="lang-name">Shell</span>
+        <div class="lang-track"><div class="lang-fill" style="width:2%;background:var(--lime)"></div></div>
+        <span class="lang-pct">2%</span>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:1.5rem">
+      <a href="https://github.com/Aditya2545" target="_blank" class="btn-outline" style="border-color:rgba(134,239,172,.4);color:var(--lime)">
+        View Full GitHub Profile ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec-orange">
+  <div class="container">
+    <div class="section-header fu">
+      <div class="section-eyebrow">// 08 — contact</div>
+      <h2 class="section-title">Let's Work Together</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="contact-grid">
+      <div class="fu">
+        <p class="contact-p">Actively seeking robotics perception and software engineering roles in the US. Austin preferred — open to relocation anywhere. F-1 STEM OPT, will require H-1B sponsorship.</p>
+        <p class="contact-p">If you're building autonomous systems, edge AI, or robot perception pipelines and need someone who can take a system from raw sensor data to deployed TensorRT inference on Jetson hardware — I'd love to talk.</p>
+        <div class="clinks">
+          <a href="mailto:aditya.r.ghadshi@gmail.com" class="clink">
+            <span class="clink-icon ci-1">✉</span>
+            aditya.r.ghadshi@gmail.com
+          </a>
+          <a href="tel:3614556284" class="clink">
+            <span class="clink-icon ci-2">☏</span>
+            361-455-6284
+          </a>
+          <a href="https://linkedin.com/in/aditya-r-ghadshi" target="_blank" class="clink">
+            <span class="clink-icon ci-3">in</span>
+            linkedin.com/in/aditya-r-ghadshi
+          </a>
+          <a href="https://github.com/Aditya2545" target="_blank" class="clink">
+            <span class="clink-icon ci-4">⌥</span>
+            github.com/Aditya2545
+          </a>
+          <a href="https://linkedin.com/in/aditya-r-ghadshi" target="_blank" class="clink" style="border-color:rgba(134,239,172,.3);color:var(--lime)">
+            <span class="clink-icon ci-5">↓</span>
+            Download Resume
+          </a>
+        </div>
+      </div>
+
+      <div class="fu">
+        <div class="form-wrapper">
+          <div class="form-eyebrow">// Send a message</div>
+          <div class="fg">
+            <label>Name</label>
+            <input type="text" placeholder="Your name" id="cfn">
+          </div>
+          <div class="fg">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com" id="cfe">
+          </div>
+          <div class="fg">
+            <label>Company / Role</label>
+            <input type="text" placeholder="e.g. Acme Robotics · Perception Engineer" id="cfc">
+          </div>
+          <div class="fg">
+            <label>Message</label>
+            <textarea rows="5" placeholder="Tell me about the role or project..." id="cfm"></textarea>
+          </div>
+          <button class="btn-primary" onclick="cfSubmit()" style="width:100%;justify-content:center;margin-top:.5rem">
+            Send Message ✉
+          </button>
+          <div class="cf-status" id="cfs">✓ Opening your mail client...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  Built by <a href="https://github.com/Aditya2545" target="_blank">Aditya Ghadshi</a> · Austin, TX · © 2026
+</footer>
+
+<script>
+const obs = new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target)}})
+},{threshold:.07,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+
+function filterP(tag,btn){
+  document.querySelectorAll('.flt').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.proj-card').forEach(c=>{
+    const t=c.dataset.tags||'';
+    c.style.display=(tag==='all'||t.includes(tag))?'flex':'none';
+  });
+}
+
+function cfSubmit(){
+  const n=document.getElementById('cfn').value.trim();
+  const e=document.getElementById('cfe').value.trim();
+  const c=document.getElementById('cfc').value.trim();
+  const m=document.getElementById('cfm').value.trim();
+  if(!n||!e){alert('Please fill in your name and email.');return;}
+  const sub=encodeURIComponent('Portfolio inquiry from '+n+(c?' ('+c+')':''));
+  const bod=encodeURIComponent('Hi Aditya,\n\n'+m+'\n\nBest,\n'+n+'\n'+e);
+  window.location.href='mailto:aditya.r.ghadshi@gmail.com?subject='+sub+'&body='+bod;
+  const s=document.getElementById('cfs');s.style.display='block';
+}
+
+const secs=document.querySelectorAll('section[id]');
+const navA=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-90)cur=s.id;});
+  navA.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--cyan)':'';});
+},{passive:true});
+</script>
+</body>
+</html>
