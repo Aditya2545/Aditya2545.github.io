@@ -1,6 +1,6 @@
 # Aditya Ghadshi — Robotics Software Engineer
 
-**Live portfolio:** [aditya2545.github.io/portfolio](https://aditya2545.github.io/portfolio/)
+**Live portfolio:** 
 
 Robotics Software Engineer specializing in **Visual SLAM, sensor fusion, and real-time perception**. Currently completing an M.S. in Computer Science at Texas A&M University–Kingsville, where I work as an Assistant Researcher at the AI-Cyb Lab on **collaborative multi-vehicle Visual SLAM for real-time Digital Twin synchronization** using a fleet of Quanser QCars.
 
